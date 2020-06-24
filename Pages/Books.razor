@@ -1,0 +1,10 @@
+﻿@page "/books";
+@inject BookService bookService;
+
+
+<h1>These are my books:</h1>
+
+@foreach(var book in bookService.GetBooks())
+{
+    <a href="@($"/book-detail/{book.Id}")">@book.Name</a>
+}
