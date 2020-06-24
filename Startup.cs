@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PublicationSystem.Data;
 using PublicationSystem.Services;
 
 namespace PublicationSystem
@@ -27,6 +29,9 @@ namespace PublicationSystem
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddTransient<BookService>();
+
+            services.AddDbContext<PublicationDbContext>(builder =>
+                builder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=PublicationSystem;Integrated Security=True"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
