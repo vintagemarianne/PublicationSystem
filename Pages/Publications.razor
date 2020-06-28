@@ -1,0 +1,14 @@
+﻿@page "/publications";
+
+<h1>Available Publications:</h1>
+
+@foreach(var publication in PublicationList)
+{
+<div style="margin-bottom: 30px">
+    <div>@publication.Title</div>
+    <div>@publication.Author</div>
+    <div>@publication.Isbn</div>
+    <div>@publication.Description</div>
+    <div>@publication.Price</div>
+</div>
+}

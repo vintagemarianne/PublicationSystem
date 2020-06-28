@@ -23,11 +23,16 @@ namespace PublicationSystem.Pages
             base.OnInitialized();
 
             var ordersQuery =
-                from order in Db.Set<Order>()
-                where order.TotalPrice < 10_000
-                select order;
+        from order in Db.Set<Order>()
+        select order;
 
             var orders = ordersQuery.ToList();
         }
+        //protected override void OnInitialized()
+        //    {
+        //    base.OnInitialized();
+
+        //    
+        // }
     }
 }
