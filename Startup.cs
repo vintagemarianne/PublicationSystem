@@ -29,6 +29,7 @@ namespace PublicationSystem
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddTransient<BookService>();
+            services.AddTransient<IPublicationService, PublicationService>();
 
             services.AddDbContext<PublicationDbContext>(builder =>
                 builder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=PublicationSystem;Integrated Security=True"));

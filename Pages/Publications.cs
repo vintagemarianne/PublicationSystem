@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PublicationSystem.Services;
 
 namespace PublicationSystem.Pages
 {
@@ -12,6 +13,8 @@ namespace PublicationSystem.Pages
     {
         [Inject]
         public PublicationDbContext Db { get; set; }
+        [Inject]
+        public IPublicationService PublicationService { get; set; }
 
         public IEnumerable<Publication> PublicationList { get; set; }
 
@@ -24,6 +27,21 @@ namespace PublicationSystem.Pages
 
             PublicationList = publicationsQuery.ToList();
             await base.OnInitializedAsync();
+        }
+
+        public async Task AddPublicationAsync(Publication publication)
+        {
+            await PublicationService.AddPublication(publication);
+        }
+
+        public async Task DeletePublicationAsync(Guid id)
+        {
+            await PublicationService.DeletePublicationAsync(id);
+        }
+
+        public async Task UpdatePublicationAsync(Publication publication)
+        {
+            await PublicationService.UpdatePublicationAsync(publication);
         }
     }
 }
